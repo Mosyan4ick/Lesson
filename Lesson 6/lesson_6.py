@@ -1,6 +1,3 @@
-from itertools import cycle
-import base64
-
 # Номер 1
 try:
     count = int(input('Введите кол-во строк: '))
