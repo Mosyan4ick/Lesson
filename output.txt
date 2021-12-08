@@ -1,1 +1,1 @@
-Кол-во молекул равно 1
+The number of molecules is 1

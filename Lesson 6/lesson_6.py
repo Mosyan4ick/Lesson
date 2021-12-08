@@ -52,7 +52,7 @@ try:
         text_f_r = f_r.read()
     f_wr = open('output.txt', 'w')
     count_alcohol = list(map(int, text_f_r.split(' ')))
-    f_wr.write(f'Кол-во молекул равно {min(count_alcohol[0] // 2, count_alcohol[1] // 6, count_alcohol[2] // 1)}')
+    f_wr.write(f'The number of molecules is {min(count_alcohol[0] // 2, count_alcohol[1] // 6, count_alcohol[2] // 1)}')
     f_r.close()
     f_wr.close()
 except FileNotFoundError:
