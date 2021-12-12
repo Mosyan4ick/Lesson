@@ -2,8 +2,11 @@ import random
 print("Первый номер \n\n\n")
 
 def buble_sort(a):
-    '''
-    Сортировка пузырьком
+    '''Сортировка пузырьком
+Выполняет сортировку пузырьком и возвращает отсортированный список
+
+Ключевые аргументы:
+a -- список для сортировки
 
     >>> buble_sort([717, -527, 910, -698, -27, 276, -6, -903, 179, 568, -18, 977, 521, -950, -167, -849, 757, -962, -591, -332])
     [-962, -950, -903, -849, -698, -591, -527, -332, -167, -27, -18, -6, 179, 276, 521, 568, 717, 757, 910, 977]
@@ -11,16 +14,13 @@ def buble_sort(a):
     [-955, -891, -582, -518, -429, -290, -177, 172, 434, 738]
     >>> buble_sort([6, -49, -38, 25, 19])
     [-49, -38, 6, 19, 25]
-
-    :param a: Не отсортированный список a
-    :return: Результатом является список, отсортированный по средством алгоритма сортировки "Пузырьком".
     '''
     f = False
     for i in range(len(a)):
         f = False
-        for j in range(len(a) - i - 1):
-            if a[j] > a[j + 1]:
-                a[j], a[j + 1] = a[j + 1], a[j]
+        for j in range(len(a)-i-1):
+            if a[j] > a[j+1]:
+                a[j], a[j+1] = a[j+1], a[j]
                 f = True
         if not f:
             break
@@ -34,8 +34,11 @@ print(f"Отсортированный список: {buble_sort(lst)}")
 
 
 def transformation(color):
-    '''
-    Преобразование кода цвета
+    '''Преобразует код цвета в 16-ное представление. 
+    Выводит строку, являющуюся 16-ным представлением кода цвета.
+
+Ключевые аргументы:
+color -- код цвета
 
     >>> transformation(255)
     'ff'
@@ -43,9 +46,6 @@ def transformation(color):
     '0f'
     >>> transformation(8)
     '08'
-
-    :param color: Код цвета (0-255)
-    :return: Строковое обозначение кода цвета в 16 ричной системе (от 00 до FF)
     '''
 
     if color < 16:
@@ -90,11 +90,7 @@ inventory_volume = 10
 
 
 def inventory_weight_sum():
-    '''
-    Считает суммарный вес инвентаря
-
-    :return: Сумма веса всех предметов в инвентаре
-    '''
+    '''Считает суммарный вес инвентаря и возвращает его'''
     global inventory
     summ = 0
     for indx in range(len(inventory)):
@@ -103,11 +99,11 @@ def inventory_weight_sum():
 
 
 def inventory_add(item_name, item_weight):
-    '''
-    Добавляет предмет в инвентарь
-
-    :param item_name: Наименование предмета
-    :param item_weight: Вес предмета
+    '''Добавляет предмет в инвентарь
+    
+    Ключевые аргументы:
+    item_name -- наименование предмета
+    item_weitght -- вес предмета
     '''
     global inventory, inventory_volume
     if item_weight + inventory_weight_sum() <= inventory_volume:
@@ -164,13 +160,13 @@ while True:
     elif item[0] == "-":
         print(f"Выберите содержимое инвентаря которое хотите удалить:")
         for itm in range(len(inventory)):
-            print(f"{itm + 1}: {inventory[itm]}")
+            print(f"{itm+1}: {inventory[itm]}")
         try:
             selection_of_the_deleted = int(input())
         except:
             print("Неверно введен номер")
             continue
-        inventory.pop(selection_of_the_deleted - 1)
+        inventory.pop(selection_of_the_deleted-1)
     elif item[0] == "*":
         iws = inventory_weight_sum()
         print(f"Содержимое инвентаря:\n{inventory}\n"

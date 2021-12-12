@@ -14,11 +14,21 @@ for line in range(count):
 
 
 def string_to_bytes(list_line):
+    """Переводит все строки списка в байт-представление.
+    
+    Ключевые аргументы:
+    list_line -- переводимый список
+    """
     for word in range(len(list_line)):
         list_line[word] = list_line[word].encode('utf-8')
 
 
 def bytes_to_string(list_bytes):
+    """Переводит все байт-представления строк в строки
+
+    Ключевые аргументы:
+    list_bytes -- список байт-представлений строк
+    """
     for word in range(len(list_bytes)):
         list_bytes[word] = list_bytes[word].decode('utf-8')
 
@@ -28,7 +38,7 @@ def view(list):
     len_list = len(list)
     for word in range(len_list):
         view_string += str(list[word])
-        if word != len_list - 1:
+        if word != len_list-1:
             view_string += " "
     return view_string
 
@@ -52,7 +62,7 @@ try:
         text_f_r = f_r.read()
     f_wr = open('output.txt', 'w')
     count_alcohol = list(map(int, text_f_r.split(' ')))
-    f_wr.write(f'The number of molecules is {min(count_alcohol[0] // 2, count_alcohol[1] // 6, count_alcohol[2] // 1)}')
+    f_wr.write(f'The number of molecules is {min(count_alcohol[0]//2, count_alcohol[1]//6, count_alcohol[2]//1)}')
     f_r.close()
     f_wr.close()
 except FileNotFoundError:
