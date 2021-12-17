@@ -1,0 +1,4 @@
+2021-12-16 22:59:59.395 | INFO     | __main__:wrapper:155 - Start
+2021-12-16 23:00:02.402 | INFO     | __main__:wrapper:157 - Lead time = 3.006410598754883
+2021-12-16 23:00:07.630 | INFO     | __main__:wrapper:155 - Start
+2021-12-16 23:00:09.377 | ERROR    | __main__:quadratic_equation:170 - Value error!

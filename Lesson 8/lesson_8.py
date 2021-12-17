@@ -1,3 +1,5 @@
+import math, cmath, time
+from loguru import logger
 class Animals:
     def __init__(self, alive_or_not=True):
         self.alive_or_not = alive_or_not
@@ -142,3 +144,44 @@ print("\nСравнение по кол-ву ДЗ:\n"
      f"Толя >= Ваня: {Tolya >= Vanya}\n"
      f"Толя == Ваня: {Tolya == Vanya}\n"
      f"Толя != Ваня: {Tolya != Vanya}")
+
+
+logger.add('log.log', level = "DEBUG")
+
+def  decorator(func):
+    def wrapper():
+        time.sleep(3)
+        start = time.time()
+        logger.info('Start')
+        func()
+        logger.info(f'Lead time = {time.time() - start}')
+    return wrapper
+
+@decorator
+@logger.catch
+def quadratic_equation():
+    print(" Квадратное уравнение \n"
+          "ax^2 + bx + c = d")
+    try:  
+        F = list(map(float, input("Введите коэфициенты уравнения в формате 'a b c d' через пробел: ").split(" ")))
+        F[2] = F[2] - F[3]
+        F = F[:-1]
+    except ValueError:
+        logger.error("Value error!")
+        exit()
+    if F[0] == 0 and F[1] != 0:
+        print(f"Корень уравнения = {-F[2] / F[1]}")
+    elif F[0] == 0 and F[1] == 0:
+        print("Уравнения не существует")
+    dis = math.pow(F[1], 2) - 4*F[0]*F[2]
+    print(f"Дискриминант = {dis}")
+    if dis > 0:
+        print(f"Первый корень уравнения = {(-F[1] + math.sqrt(dis)) / (2*F[0])}")
+        print(f"Второй корень уравнения = {(-F[1] - math.sqrt(dis)) / (2*F[0])}")
+    elif dis == 0:
+        print(f"Корень уравнения = {(-F[1]) / (2*F[0])}")
+    else:
+        print(f"Первый корень уравнения = {(-F[1] + complex(cmath.sqrt(dis))) / (2*F[0])}")
+        print(f"Второй корень уравнения = {(-F[1] - complex(cmath.sqrt(dis))) / (2*F[0])}")
+
+quadratic_equation()
